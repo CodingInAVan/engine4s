@@ -1,18 +1,18 @@
 package com.engine4s.graphics
 
-
 import java.nio.FloatBuffer
 import org.lwjgl.opengl.GL11.*
 import org.lwjgl.opengl.GL15.*
 import org.lwjgl.opengl.GL20.*
 import org.lwjgl.opengl.GL30.*
 import org.lwjgl.system.MemoryUtil
+import com.engine4s.Cleanable
 
-case class Mesh(vaoId: Int, vboId: Int, vertexCount: Int):
+case class Mesh(vaoId: Int, vboId: Int, vertexCount: Int) extends Cleanable {
   def getVaoId: Int = vaoId;
   def getVertexCount: Int = vertexCount;
 
-  def cleanUp(): Unit = {
+  override def cleanUp(): Unit = {
     glDisableVertexAttribArray(0);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0)
@@ -21,9 +21,9 @@ case class Mesh(vaoId: Int, vboId: Int, vertexCount: Int):
     glBindVertexArray(0)
     glDeleteVertexArrays(vaoId)
   }
+}
 
-
-object Mesh:
+object Mesh {
   def apply(positions: Array[Float]): Mesh = {
     val verticesBuffer: Option[FloatBuffer] = try {
       val buffer = MemoryUtil.memAllocFloat(positions.length)
@@ -51,3 +51,4 @@ object Mesh:
 
     new Mesh(vaoId = glGenVertexArrays(), vboId = glGenBuffers(), vertexCount = vertexCount)
   }
+}
