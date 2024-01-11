@@ -1,4 +1,4 @@
-package com.engine4s.scene
+package com.engine4s.graphics.scene
 
 import com.engine4s.Cleanable
 

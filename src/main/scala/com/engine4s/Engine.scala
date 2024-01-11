@@ -1,7 +1,7 @@
 package com.engine4s
 
-import com.engine4s.graphics.Render
-import com.engine4s.scene.Scene
+import com.engine4s.graphics.render.{OpenGlRender, Render}
+import com.engine4s.graphics.scene.Scene
 
 case class Engine(
   windowTitle: String,
@@ -13,7 +13,7 @@ case class Engine(
   })
   private val targetFps = opts.fps
   private val targetUps = opts.ups
-  private val render = new Render
+  private val render: Render = new OpenGlRender
   private val scene = new Scene
   private var running = false
 

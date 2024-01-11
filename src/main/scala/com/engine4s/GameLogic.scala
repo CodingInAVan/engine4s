@@ -1,7 +1,7 @@
 package com.engine4s
 
-import com.engine4s.graphics.Render
-import com.engine4s.scene.Scene
+import com.engine4s.graphics.render.Render
+import com.engine4s.graphics.scene.Scene
 
 trait GameLogic extends Cleanable {
   def init(window: Window, scene: Scene, render: Render): Unit

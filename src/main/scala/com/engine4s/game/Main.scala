@@ -1,7 +1,7 @@
 package com.engine4s.game
 
-import com.engine4s.graphics.Render
-import com.engine4s.scene.Scene
+import com.engine4s.graphics.render.Render
+import com.engine4s.graphics.scene.Scene
 import com.engine4s.{Engine, GameLogic, Window, WindowOptions}
 
 object Main:
